@@ -1,5 +1,6 @@
 package ds
 
+// Queue is ds implementing FIFO queue using cyclic buffer.
 type Queue struct {
 	data          []interface{}
 	head, tail, n int
