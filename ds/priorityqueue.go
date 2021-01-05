@@ -7,22 +7,22 @@ import (
 )
 
 type priorityQueue struct {
-	heap     []interface{}
-	priority func(interface{}) int
-	index    map[interface{}]int
+	heap  []interface{}
+	less  func(a, b interface{}) bool
+	index map[interface{}]int
 }
 
 type PriorityQueue struct {
 	pq *priorityQueue
 }
 
-// NewPriorityQueue creates a new priority queue for the given priority
-// function. Items will be sorted in the ascending order, an item with the
-// lowest priority will be poped first.
-func NewPriorityQueue(priority func(interface{}) int) *PriorityQueue {
+// NewPriorityQueue creates a new priority queue using the order given by the
+// less function. The queue will return items in the ascending order, the
+// lowest item will be returned first.
+func NewPriorityQueue(less func(a, b interface{}) bool) *PriorityQueue {
 	pq := &priorityQueue{
-		priority: priority,
-		index:    make(map[interface{}]int),
+		less:  less,
+		index: make(map[interface{}]int),
 	}
 	heap.Init(pq)
 	return &PriorityQueue{pq: pq}
@@ -51,13 +51,12 @@ func (pq *PriorityQueue) Update(x interface{}) error {
 func (pq *priorityQueue) Len() int { return len(pq.heap) }
 
 func (pq *priorityQueue) Less(i, j int) bool {
-	return pq.priority(pq.heap[i]) < pq.priority(pq.heap[j])
+	return pq.less(pq.heap[i], pq.heap[j])
 }
 
 func (pq *priorityQueue) Swap(i, j int) {
 	pq.heap[i], pq.heap[j] = pq.heap[j], pq.heap[i]
-	pq.index[pq.heap[i]] = i
-	pq.index[pq.heap[j]] = j
+	pq.index[pq.heap[i]], pq.index[pq.heap[j]] = i, j
 }
 
 func (pq *priorityQueue) Push(x interface{}) {
