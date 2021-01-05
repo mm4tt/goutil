@@ -3,6 +3,9 @@
 ## ChangeLog
 
 #### 0.2.0
+- Introduced the assert library.
+
+#### 0.2.0
 - Enhanced the PriorityQueue by replacing the priority function with the more
   generic less function.
 
