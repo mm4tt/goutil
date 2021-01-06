@@ -2,8 +2,7 @@ package ds
 
 import (
 	"container/heap"
-
-	"github.com/go-errors/errors"
+	"fmt"
 )
 
 type priorityQueue struct {
@@ -45,7 +44,7 @@ func (pq *PriorityQueue) Update(x interface{}) error {
 		heap.Fix(pq.pq, i)
 		return nil
 	}
-	return errors.Errorf("%v not present in priority queue", x)
+	return fmt.Errorf("priorityqueue: %v not present in priority queue", x)
 }
 
 func (pq *priorityQueue) Len() int { return len(pq.heap) }

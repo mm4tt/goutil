@@ -2,8 +2,11 @@
 
 ## ChangeLog
 
-#### 0.2.0
-- Introduced the assert library.
+#### 0.3.1
+- Get rid of the external goerrors dep.
+
+#### 0.3.0
+- Introduced the "assert" library.
 
 #### 0.2.0
 - Enhanced the PriorityQueue by replacing the priority function with the more
