@@ -3,12 +3,21 @@ package assert
 
 import (
 	"fmt"
+	"reflect"
 	"runtime"
 )
 
 func That(condition bool, fmtAndArgs ...interface{}) {
 	if !condition {
 		panic(newAssertError("condition is not true", fmtAndArgs))
+	}
+}
+
+func NotNil(i interface{}, fmtAndArgs ...interface{}) {
+	if !(i==nil || reflect.ValueOf(i).IsNil()) {
+		panic(newAssertError(
+			fmt.Sprintf("value %v of type %T is not nil", i, i),
+			fmtAndArgs))
 	}
 }
 
