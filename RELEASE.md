@@ -2,6 +2,9 @@
 
 ## ChangeLog
 
+#### 0.4.1
+- Add assert.NotNil method.
+
 #### 0.3.1
 - Get rid of the external goerrors dep.
 
