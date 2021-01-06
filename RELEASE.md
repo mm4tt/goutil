@@ -2,6 +2,10 @@
 
 ## ChangeLog
 
+
+#### 0.4.2
+- Fix a bug in assert.NotNil.
+
 #### 0.4.1
 - Fix a bug in assert package.
 

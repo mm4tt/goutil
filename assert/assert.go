@@ -14,9 +14,9 @@ func That(condition bool, fmtAndArgs ...interface{}) {
 }
 
 func NotNil(i interface{}, fmtAndArgs ...interface{}) {
-	if !(i==nil || reflect.ValueOf(i).IsNil()) {
+	if i == nil || reflect.ValueOf(i).IsNil() {
 		panic(newAssertError(
-			fmt.Sprintf("value %v of type %T is not nil", i, i),
+			fmt.Sprintf("value %v of type %T is nil", i, i),
 			fmtAndArgs...))
 	}
 }
