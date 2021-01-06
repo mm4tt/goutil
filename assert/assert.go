@@ -9,7 +9,7 @@ import (
 
 func That(condition bool, fmtAndArgs ...interface{}) {
 	if !condition {
-		panic(newAssertError("condition is not true", fmtAndArgs))
+		panic(newAssertError("condition is not true", fmtAndArgs...))
 	}
 }
 
@@ -17,13 +17,13 @@ func NotNil(i interface{}, fmtAndArgs ...interface{}) {
 	if !(i==nil || reflect.ValueOf(i).IsNil()) {
 		panic(newAssertError(
 			fmt.Sprintf("value %v of type %T is not nil", i, i),
-			fmtAndArgs))
+			fmtAndArgs...))
 	}
 }
 
 func NoError(err error, fmtAndArgs ...interface{}) {
 	if err != nil {
-		panic(newAssertError("error is not nil: "+err.Error(), fmtAndArgs))
+		panic(newAssertError("error is not nil: "+err.Error(), fmtAndArgs...))
 	}
 }
 
@@ -38,7 +38,7 @@ func errorMsg(defaultMsg string, fmtAndArgs ...interface{}) string {
 func newAssertError(defaultMsg string, fmtAndArgs ...interface{}) *assertError {
 	return &assertError{
 		method: methodName(),
-		msg:    errorMsg(defaultMsg, fmtAndArgs),
+		msg:    errorMsg(defaultMsg, fmtAndArgs...),
 	}
 }
 

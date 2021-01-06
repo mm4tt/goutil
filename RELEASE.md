@@ -3,6 +3,9 @@
 ## ChangeLog
 
 #### 0.4.1
+- Fix a bug in assert package.
+
+#### 0.4.0
 - Add assert.NotNil method.
 
 #### 0.3.1
