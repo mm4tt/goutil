@@ -2,18 +2,20 @@
 
 ## ChangeLog
 
+#### 0.5.0
+- Introduced the async library.
 
 #### 0.4.2
-- Fix a bug in assert.NotNil.
+- Fixed a bug in assert.NotNil.
 
 #### 0.4.1
-- Fix a bug in assert package.
+- Fixed a bug in assert package.
 
 #### 0.4.0
-- Add assert.NotNil method.
+- Added assert.NotNil method.
 
 #### 0.3.1
-- Get rid of the external goerrors dep.
+- Got rid of the external goerrors dep.
 
 #### 0.3.0
 - Introduced the "assert" library.
