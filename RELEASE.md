@@ -2,6 +2,9 @@
 
 ## ChangeLog
 
+#### 0.6.1
+- Fix memory leak in priority queue.
+
 #### 0.6.0
 - Migrated to go1.18 and migrated the priority-queue to generics.
 

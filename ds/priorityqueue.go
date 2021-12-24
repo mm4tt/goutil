@@ -5,12 +5,6 @@ import (
 	"fmt"
 )
 
-type priorityQueue[T comparable] struct {
-	heap  []T
-	less  func(a, b T) bool
-	index map[T]int
-}
-
 type PriorityQueue[T comparable] struct {
 	pq *priorityQueue[T]
 }
@@ -47,6 +41,13 @@ func (pq *PriorityQueue[T]) Update(x T) error {
 	return fmt.Errorf("priorityqueue: %v not present in priority queue", x)
 }
 
+type priorityQueue[T comparable] struct {
+	heap  []T
+	less  func(a, b T) bool
+	index map[T]int
+	nil   T
+}
+
 func (pq *priorityQueue[T]) Len() int { return len(pq.heap) }
 
 func (pq *priorityQueue[T]) Less(i, j int) bool {
@@ -68,6 +69,7 @@ func (pq *priorityQueue[T]) Pop() any {
 	old := pq.heap
 	n := len(old)
 	item := old[n-1]
+	old[n-1] = pq.nil // avoid memory leak
 	delete(pq.index, item)
 	pq.heap = old[0 : n-1]
 	return item
